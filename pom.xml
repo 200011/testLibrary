@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
+        <jackson.version>2.5.2</jackson.version>
         <spring.version>4.3.12.RELEASE</spring.version>
         <hibernate.version>5.2.11.Final</hibernate.version>
         <postgressql.version>9.4.1212</postgressql.version>
@@ -20,6 +20,18 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

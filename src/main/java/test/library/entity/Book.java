@@ -4,17 +4,17 @@ import javax.persistence.*;
 
 @Entity
 public class Book {
-    private int bookId;
+    private Integer bookId;
     private String bookname;
     private Author author;
 
     @Id
     @Column(name = "book_id")
-    public int getBookId() {
+    public Integer getBookId() {
         return bookId;
     }
 
-    public void setBookId(int bookId) {
+    public void setBookId(Integer bookId) {
         this.bookId = bookId;
     }
 

@@ -5,18 +5,17 @@ import java.util.List;
 
 @Entity
 public class Author {
-    private int authorId;
+    private Integer authorId;
     private String name;
     private String surname;
-    private List<Book> bookList;
 
     @Id
     @Column(name = "author_id")
-    public int getAuthorId() {
+    public Integer getAuthorId() {
         return authorId;
     }
 
-    public void setAuthorId(int authorId) {
+    public void setAuthorId(Integer authorId) {
         this.authorId = authorId;
     }
 
@@ -38,15 +37,6 @@ public class Author {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    @OneToMany(mappedBy = "author")
-    public List<Book> getBookList() {
-        return bookList;
-    }
-
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
     }
 
     @Override
