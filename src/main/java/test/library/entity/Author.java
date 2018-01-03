@@ -10,6 +10,7 @@ public class Author {
     private String surname;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "author_id")
     public Integer getAuthorId() {
         return authorId;

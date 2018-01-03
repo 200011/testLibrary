@@ -10,16 +10,14 @@
 </head>
 <body>
 authors
-<div id="feedback"></div>
 <form id="addBook-form">
     <div>
         <label>author</label>
-        <input list="authors" name="author" id="authorId">
-        <datalist id="authors">
+        <select id="authorId">
             <c:forEach  items="${authors}" var="author">
-                <option value="${author.surname} ${author.name}">
+                <option value="${author.authorId}">${author.surname} ${author.name}</option>
             </c:forEach>
-        </datalist>
+        </select>
     </div>
     <div>
         <label>book</label>
@@ -35,15 +33,9 @@ authors
     jQuery(document).ready(function($) {
 
         $("#addBook-form").submit(function(event) {
-
-            // Disble the search button
-            enableSearchButton(false);
-
-            // Prevent the form from submitting via the browser.
             event.preventDefault();
 
             searchViaAjax();
-
         });
 
     });
@@ -64,27 +56,12 @@ authors
             success : function(data) {
                 console.log("SUCCESS: ", data);
                 display(data);
-            },
-            error : function(e) {
-                console.log("ERROR: ", e);
-                display(e);
-            },
-            done : function(e) {
-                console.log("DONE");
-                enableSearchButton(true);
             }
         });
 
     }
-
-    function enableSearchButton(flag) {
-        $("#bth-add").prop("disabled", flag);
-    }
-
     function display(data) {
-        var json = "<h4>Ajax Response</h4><pre>"
-            + JSON.stringify(data, null, 4) + "</pre>";
-        $('#feedback').html(json);
+        $('#result_text').html(data.msg);
     }
 </script>
 </body>

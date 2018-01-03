@@ -9,6 +9,7 @@ public class Book {
     private Author author;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "book_id")
     public Integer getBookId() {
         return bookId;

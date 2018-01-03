@@ -17,6 +17,11 @@ public class BookDaoImpl implements BookDao {
     SessionFactory sessionFactory;
 
     @Transactional
+    public void addBook(Book book) {
+        sessionFactory.getCurrentSession().save(book);
+    }
+
+    @Transactional
     public List<Book> getAllBooks() {
         return sessionFactory.getCurrentSession().createQuery("from Book ").list();
     }
