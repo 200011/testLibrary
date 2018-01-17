@@ -9,8 +9,9 @@ public class Book {
     private Author author;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "book_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_generator")
+    @SequenceGenerator(name="book_generator", sequenceName = "book_seq", initialValue = 6, allocationSize = 1)
+    @Column(name = "bookid")
     public Integer getBookId() {
         return bookId;
     }
@@ -30,7 +31,7 @@ public class Book {
     }
 
     @ManyToOne
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "authorid")
     public Author getAuthor() {
         return author;
     }

@@ -1,55 +1,60 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%--
+  Created by IntelliJ IDEA.
+  User: atapstov
+  Date: 1/17/2018
+  Time: 9:30 AM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>FIND</title>
     <link href="<c:url value="/resources/css/myStyle.css" />" rel="stylesheet">
     <script src="<c:url value="/resources/script/jquery/jquery-3.2.1.min.js" />"></script>
 </head>
 <body>
-authors
-<form id="addBook-form">
+Search
+<form id="searchForm">
     <div>
-        <label>author</label>
-        <select id="authorId">
-            <c:forEach  items="${authors}" var="author">
-                <option value="${author.authorId}">${author.surname} ${author.name}</option>
-            </c:forEach>
-        </select>
+        <label>Name author</label>
+        <input type="text" id="authorName">
+        <label>Surname author</label>
+        <input type="text" id="authorSurname">
     </div>
     <div>
-        <label>book</label>
+        <label>Name book</label>
         <input type="text" id="book">
     </div>
     <div>
-        <button id="bth-add">Add</button>
+        <button id="searchButton">Search</button>
     </div>
 </form>
-<p id="result_text"></p>
+
+<p id="searchResult"></p>
 
 <script>
     jQuery(document).ready(function($) {
 
-        $("#addBook-form").submit(function(event) {
+        $("#searchForm").submit(function(event) {
             event.preventDefault();
 
-            addViaAjax();
+            searchViaAjax();
         });
 
     });
 
-    function addViaAjax() {
+    function searchViaAjax() {
 
         var search = {};
-        search["authorId"] = $("#authorId").val();
+        search["authorName"] = $("#authorName").val();
+        search["authorSurname"] = $("#authorSurname").val();
         search["book"] = $("#book").val();
 
         $.ajax({
             type : "POST",
             contentType : "application/json",
-            url : "./addBook",
+            url : "./search",
             data : JSON.stringify(search),
             dataType : 'json',
             timeout : 100000,
@@ -60,8 +65,10 @@ authors
         });
     }
     function display(data) {
-        $('#result_text').html(data.msg);
+        $('#searchResult').html(data.msg);
     }
+
 </script>
+
 </body>
 </html>

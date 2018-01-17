@@ -10,8 +10,9 @@ public class Author {
     private String surname;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "author_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_generator")
+    @SequenceGenerator(name="author_generator", sequenceName = "author_seq", initialValue = 5, allocationSize = 1)
+    @Column(name = "authorid")
     public Integer getAuthorId() {
         return authorId;
     }
