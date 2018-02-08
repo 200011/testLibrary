@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import test.library.dao.BookDao;
 import test.library.entity.Book;
 import test.library.model.AddBookAjaxModel;
+import test.library.model.ResultOfSearch;
+import test.library.model.SearchAjaxModel;
 import test.library.service.AuthorService;
 import test.library.service.BookService;
 
@@ -41,6 +43,10 @@ public class BookServiceImpl implements BookService {
             }
         }
         return false;
+    }
+
+    public List<Book> searchBooksByCriteria(SearchAjaxModel searchAjaxModel) {
+        return bookDao.searchBooksByCriteria(searchAjaxModel);
     }
 
 
