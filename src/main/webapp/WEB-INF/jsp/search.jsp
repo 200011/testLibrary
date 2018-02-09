@@ -1,38 +1,39 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: atapstov
-  Date: 1/17/2018
-  Time: 9:30 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>FIND</title>
-    <link href="<c:url value="/resources/css/myStyle.css" />" rel="stylesheet">
-    <script src="<c:url value="/resources/script/jquery/jquery-3.2.1.min.js" />"></script>
-</head>
+<jsp:include page="templates/head.jsp"/>
 <body>
-Search
-<form id="searchForm">
-    <div>
-        <label>Name author</label>
-        <input type="text" id="authorName">
-        <label>Surname author</label>
-        <input type="text" id="authorSurname">
+<jsp:include page="templates/header.jsp"/>
+<div id="container">
+    <div class="mainTitle">
+        Поиск
     </div>
-    <div>
-        <label>Name book</label>
-        <input type="text" id="book">
-    </div>
-    <div>
-        <button id="searchButton">Search</button>
-    </div>
-</form>
+    <div class="row">
+        <div class="cols col-2">
+            <jsp:include page="templates/sidebar.jsp"/>
+        </div>
+        <div class="cols col-10">
+            <form id="searchForm">
+                <div>
+                    <label>Name author</label>
+                    <input type="text" id="authorName">
+                    <label>Surname author</label>
+                    <input type="text" id="authorSurname">
+                </div>
+                <div>
+                    <label>Name book</label>
+                    <input type="text" id="book">
+                </div>
+                <div>
+                    <button id="searchButton">Search</button>
+                </div>
+            </form>
 
-<p id="searchResult"></p>
+            <p id="searchResult"></p>
+        </div>
+    </div>
+</div>
 
+<jsp:include page="templates/footer.jsp"/>
 <script>
     jQuery(document).ready(function($) {
 
@@ -69,6 +70,5 @@ Search
     }
 
 </script>
-
 </body>
 </html>

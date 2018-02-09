@@ -19,6 +19,7 @@ public class BookController {
 
     @RequestMapping(path = "/books/{authorId}", method = RequestMethod.GET)
     String books(@PathVariable(value = "authorId") Integer authorId, Model model) {
+        model.addAttribute("author", authorService.getAuthorById(authorId));
         model.addAttribute("books", bookService.getBooksByAuthorId(authorId));
         return "books";
     }

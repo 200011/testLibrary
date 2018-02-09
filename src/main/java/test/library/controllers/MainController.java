@@ -36,7 +36,7 @@ public class MainController {
     AjaxResponseBody search(@RequestBody SearchAjaxModel searchAjaxModel) {
         AjaxResponseBody responseBody = new AjaxResponseBody();
 
-bookService.searchBooksByCriteria(searchAjaxModel);
+        bookService.searchBooksByCriteria(searchAjaxModel);
 
 
         return responseBody;

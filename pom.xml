@@ -16,7 +16,7 @@
         <spring.version>4.3.12.RELEASE</spring.version>
         <hibernate.version>5.2.11.Final</hibernate.version>
         <postgressql.version>9.4.1212</postgressql.version>
-
+        <resteasy.version>3.1.4.Final</resteasy.version>
     </properties>
 
     <dependencies>
@@ -104,6 +104,19 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jpamodelgen</artifactId>
             <version>${hibernate.version}</version>
+        </dependency>
+
+
+        <!-- resteasy-jaxrs -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>${resteasy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-spring</artifactId>
+            <version>${resteasy.version}</version>
         </dependency>
 
     </dependencies>

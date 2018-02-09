@@ -1,0 +1,42 @@
+ul.menu, ul.submenu {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul:after {
+    display: block;
+    content: ' ';
+    clear: both;
+    float: none;
+}
+ul.menu > li {
+    float: left;
+    position: relative;
+}
+li > a {
+    display: block;
+    padding: 10px;
+    color: black;
+    background-color: #c6e7ff;
+    text-decoration: none;
+}
+li > a:hover {
+    background-color: #91e9ff;
+}
+
+ul.submenu {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 40px;
+    left: 30%;
+}
+ul.submenu > li > a {
+    width: 110%;
+    white-space: nowrap;
+}
+
+ul.menu > li:hover > ul.submenu {
+    display: block;
+}

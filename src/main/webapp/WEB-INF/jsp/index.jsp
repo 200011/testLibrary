@@ -4,11 +4,14 @@
 <jsp:include page="templates/head.jsp"/>
 <body>
 <jsp:include page="templates/header.jsp"/>
-<div id="myContainer">
-    <%--<c:forEach  items="${authors}" var="author">
-        <a href="books/${author.authorId}">${author.surname} ${author.name}</a><br>
-    </c:forEach>--%>
-    <a href="addBook">Добавить книгу</a><br>
+
+<div id="container">
+    <div class="row">
+        <div class="cols col-2">
+            <jsp:include page="templates/sidebar.jsp"/>
+        </div>
+        <div class="cols col-10">content</div>
+    </div>
 </div>
 
 <jsp:include page="templates/footer.jsp"/>
