@@ -1,7 +1,11 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<jsp:include page="templates/head.jsp"/>
+<head>
+
+    <jsp:include page="templates/head.jsp"/>
+
+</head>
 <body>
 <jsp:include page="templates/header.jsp"/>
 
@@ -16,13 +20,10 @@
         </div>
         <div class="cols col-10">
             <c:forEach items="${books}" var="book">
-                <div class="cols col-3">
-                    <img src="../../resources/img/images.jpg" width="100%" height="30%">
-                </div>
-                <div class="cols col-3">
-                    <span class="title"> ${book.bookname}</span><br>
-                    some descriptionsome descriptionsome descriptionsome description
-                </div>
+               <%-- <img src="../../resources/img/images.jpg" width="100%" height="30%">--%>
+
+                <span class="title"> ${book.bookname}</span><br>
+
             </c:forEach>
         </div>
     </div>

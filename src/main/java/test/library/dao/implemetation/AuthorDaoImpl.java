@@ -14,10 +14,10 @@ import java.util.List;
 public class AuthorDaoImpl implements AuthorDao {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     @Transactional
-    public Author getAuthorById(int authorId) {
+    public Author getAuthorById(final int authorId) {
         Query query = sessionFactory.getCurrentSession().createQuery("from Author where authorId=:authorId");
         query.setParameter("authorId", authorId);
         return (Author) query.uniqueResult();

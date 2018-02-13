@@ -4,24 +4,24 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 public class AjaxResponseBody {
     @JsonView
-    String msg;
+    private String msg;
 
     @JsonView
-    String code;
+    private String code;
 
-    public String getMsg() {
+    public final String getMsg() {
         return msg;
     }
 
-    public void setMsg(String msg) {
+    public void setMsg(final String msg) {
         this.msg = msg;
     }
 
-    public String getCode() {
+    public final String getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(final String code) {
         this.code = code;
     }
 }

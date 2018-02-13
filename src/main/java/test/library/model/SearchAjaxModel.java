@@ -4,29 +4,29 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 public class SearchAjaxModel {
     @JsonView
-    String authorName;
+    private String authorName;
     @JsonView
-    String authorSurname;
+    private String authorSurname;
     @JsonView
-    String book;
+    private String book;
 
-    public String getAuthorName() {
+    public final String getAuthorName() {
         return authorName;
     }
 
-    public void setAuthorName(String authorName) {
+    public void setAuthorName(final String authorName) {
         this.authorName = authorName;
     }
 
-    public String getAuthorSurname() {
+    public final String getAuthorSurname() {
         return authorSurname;
     }
 
-    public void setAuthorSurname(String authorSurname) {
+    public void setAuthorSurname(final String authorSurname) {
         this.authorSurname = authorSurname;
     }
 
-    public String getBook() {
+    public final String getBook() {
         return book;
     }
 

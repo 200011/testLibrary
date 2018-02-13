@@ -12,13 +12,13 @@ import java.util.List;
 public class AuthorServiceImpl implements AuthorService {
 
     @Autowired
-    AuthorDao authorDao;
+    private AuthorDao authorDao;
 
-    public Author getAuthorById(int authorId) {
+    public final Author getAuthorById(final int authorId) {
         return authorDao.getAuthorById(authorId);
     }
 
-    public List getAuthorList() {
+    public final List getAuthorList() {
         return authorDao.getAuthorList();
     }
 }

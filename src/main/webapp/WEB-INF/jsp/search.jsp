@@ -1,6 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="templates/head.jsp"/>
+<head>
+
+    <jsp:include page="templates/head.jsp"/>
+
+    <script src="<c:url value="/resources/script/book/searchBook.js" />"></script>
+</head>
 <body>
 <jsp:include page="templates/header.jsp"/>
 <div id="container">
@@ -34,41 +39,6 @@
 </div>
 
 <jsp:include page="templates/footer.jsp"/>
-<script>
-    jQuery(document).ready(function($) {
 
-        $("#searchForm").submit(function(event) {
-            event.preventDefault();
-
-            searchViaAjax();
-        });
-
-    });
-
-    function searchViaAjax() {
-
-        var search = {};
-        search["authorName"] = $("#authorName").val();
-        search["authorSurname"] = $("#authorSurname").val();
-        search["book"] = $("#book").val();
-
-        $.ajax({
-            type : "POST",
-            contentType : "application/json",
-            url : "./search",
-            data : JSON.stringify(search),
-            dataType : 'json',
-            timeout : 100000,
-            success : function(data) {
-                console.log("SUCCESS: ", data);
-                display(data);
-            }
-        });
-    }
-    function display(data) {
-        $('#searchResult').html(data.msg);
-    }
-
-</script>
 </body>
 </html>

@@ -5,23 +5,23 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class AddBookAjaxModel {
 
     @JsonView
-    Integer authorId;
+    private Integer authorId;
     @JsonView
-    String book;
+    private String book;
 
-    public Integer getAuthorId() {
+    public final Integer getAuthorId() {
         return authorId;
     }
 
-    public void setAuthorId(Integer authorId) {
+    public void setAuthorId(final Integer authorId) {
         this.authorId = authorId;
     }
 
-    public String getBook() {
+    public final String getBook() {
         return book;
     }
 
-    public void setBook(String book) {
+    public void setBook(final String book) {
         this.book = book;
     }
 

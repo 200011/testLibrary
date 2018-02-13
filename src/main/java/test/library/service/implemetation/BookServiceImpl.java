@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import test.library.dao.BookDao;
 import test.library.entity.Book;
 import test.library.model.AddBookAjaxModel;
-import test.library.model.ResultOfSearch;
 import test.library.model.SearchAjaxModel;
 import test.library.service.AuthorService;
 import test.library.service.BookService;
@@ -16,27 +15,27 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
 
     @Autowired
-    BookDao bookDao;
+    private BookDao bookDao;
 
     @Autowired
-    AuthorService authorService;
+    private AuthorService authorService;
 
-    public void addBook(AddBookAjaxModel addBookAjaxModel) {
+    public final void addBook(final AddBookAjaxModel addBookAjaxModel) {
         Book book = new Book();
         book.setBookname(addBookAjaxModel.getBook());
         book.setAuthor(authorService.getAuthorById(addBookAjaxModel.getAuthorId()));
         bookDao.addBook(book);
     }
 
-    public List<Book> getAllBooks() {
+    public final List<Book> getAllBooks() {
         return bookDao.getAllBooks();
     }
 
-    public List<Book> getBooksByAuthorId(int authorId) {
+    public final List<Book> getBooksByAuthorId(final int authorId) {
         return bookDao.getBooksByAuthorId(authorId);
     }
 
-    public boolean isBookExistByAuthorId(AddBookAjaxModel addBookAjaxModel) {
+    public final boolean isBookExistByAuthorId(final AddBookAjaxModel addBookAjaxModel) {
         for (Book book : getBooksByAuthorId(addBookAjaxModel.getAuthorId())) {
             if (book.getBookname().equalsIgnoreCase(addBookAjaxModel.getBook())) {
                 return true;
@@ -45,7 +44,7 @@ public class BookServiceImpl implements BookService {
         return false;
     }
 
-    public List<Book> searchBooksByCriteria(SearchAjaxModel searchAjaxModel) {
+    public final List<Book> searchBooksByCriteria(final SearchAjaxModel searchAjaxModel) {
         return bookDao.searchBooksByCriteria(searchAjaxModel);
     }
 

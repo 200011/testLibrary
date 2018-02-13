@@ -1,8 +1,6 @@
 package test.library.dao;
 
-import org.springframework.stereotype.Repository;
 import test.library.entity.Book;
-import test.library.model.ResultOfSearch;
 import test.library.model.SearchAjaxModel;
 
 import java.util.List;

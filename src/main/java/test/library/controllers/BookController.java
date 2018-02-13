@@ -12,27 +12,27 @@ import test.library.service.BookService;
 @Controller
 public class BookController {
     @Autowired
-    AuthorService authorService;
+    private AuthorService authorService;
 
     @Autowired
-    BookService bookService;
+    private BookService bookService;
 
     @RequestMapping(path = "/books/{authorId}", method = RequestMethod.GET)
-    String books(@PathVariable(value = "authorId") Integer authorId, Model model) {
+    final String books(@PathVariable(value = "authorId") final Integer authorId, final Model model) {
         model.addAttribute("author", authorService.getAuthorById(authorId));
         model.addAttribute("books", bookService.getBooksByAuthorId(authorId));
         return "books";
     }
 
     @RequestMapping(path = "/addBook", method = RequestMethod.GET)
-    String addBook(Model model) {
+    final String addBook(final Model model) {
         model.addAttribute("authors", authorService.getAuthorList());
         return "addBook";
     }
 
     @ResponseBody
     @RequestMapping(path = "/addBook", method = RequestMethod.POST)
-    AjaxResponseBody addBook(@RequestBody AddBookAjaxModel addBookAjaxModel) {
+    final AjaxResponseBody addBook(@RequestBody final AddBookAjaxModel addBookAjaxModel) {
         AjaxResponseBody responseBody = new AjaxResponseBody();
 
         if (bookService.isBookExistByAuthorId(addBookAjaxModel)) {

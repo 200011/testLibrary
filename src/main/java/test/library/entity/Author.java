@@ -23,7 +23,7 @@ public class Author {
 
     @Basic
     @Column(name = "name")
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
@@ -33,11 +33,11 @@ public class Author {
 
     @Basic
     @Column(name = "surname")
-    public String getSurname() {
+    public final String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) {
+    public void setSurname(final String surname) {
         this.surname = surname;
     }
 

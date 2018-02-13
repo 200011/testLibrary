@@ -4,19 +4,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import test.library.dao.BookDao;
 import test.library.entity.Author;
 import test.library.entity.Book;
 import test.library.entity.Book_;
-import test.library.model.ResultOfSearch;
 import test.library.model.SearchAjaxModel;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
-import javax.persistence.metamodel.EntityType;
-import javax.persistence.metamodel.Metamodel;
 import javax.transaction.Transactional;
 import java.util.List;
 import test.library.entity.Author_;
@@ -25,10 +18,10 @@ import test.library.entity.Author_;
 public class BookDaoImpl implements BookDao {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     @Transactional
-    public void addBook(Book book) {
+    public void addBook(final Book book) {
         sessionFactory.getCurrentSession().save(book);
     }
 
@@ -38,14 +31,14 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Transactional
-    public List<Book> getBooksByAuthorId(int authorId) {
+    public List<Book> getBooksByAuthorId(final int authorId) {
         Query query = sessionFactory.getCurrentSession().createQuery("from Book where author.authorId =:authorId");
         query.setParameter("authorId", authorId);
         return query.getResultList();
     }
 
     @Transactional
-    public List<Book> searchBooksByCriteria(SearchAjaxModel searchAjaxModel) {
+    public List<Book> searchBooksByCriteria(final SearchAjaxModel searchAjaxModel) {
         CriteriaBuilder cb = sessionFactory.getCriteriaBuilder();
         CriteriaQuery<Book> bookCriteria = cb.createQuery(Book.class);
         Root<Book> bookRoot = bookCriteria.from(Book.class);
