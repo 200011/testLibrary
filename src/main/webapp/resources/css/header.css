@@ -1,42 +1,42 @@
-ul.menu, ul.submenu {
-    display: block;
-    margin: 0;
-    padding: 0;
+ul.menu {
+    display: inline;
     list-style: none;
 }
-ul:after {
+ul.menu:after {
     display: block;
     content: ' ';
     clear: both;
     float: none;
 }
-ul.menu > li {
+
+.menu__item {
     float: left;
     position: relative;
 }
-li > a {
-    display: block;
+
+.menu__button {
     padding: 10px;
     color: black;
     background-color: #c6e7ff;
     text-decoration: none;
 }
-li > a:hover {
+.menu__button:hover {
     background-color: #91e9ff;
 }
 
-ul.submenu {
+.submenu {
     display: none;
     position: absolute;
     width: 100%;
     top: 40px;
     left: 30%;
+    list-style: none;
 }
-ul.submenu > li > a {
+.submenu .menu__button {
     width: 110%;
     white-space: nowrap;
 }
 
-ul.menu > li:hover > ul.submenu {
+.menu__item:hover .submenu {
     display: block;
 }
