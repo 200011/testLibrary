@@ -10,14 +10,14 @@
         <li class="menu__item"><a class="menu__button" href="#" >Список авторов</a>
             <ul class="submenu">
                 <c:forEach  items="${authors}" var="author">
-                    <li class="submenu__item"><a class="menu__button" href="books/${author.authorId}">${author.name} ${author.surname}</a></li>
+                    <li class="submenu__item"><a class="menu__button" href="/books/${author.authorId}">${author.name} ${author.surname}</a></li>
                 </c:forEach>
             </ul>
         </li>
         <li class="menu__item"><a class="menu__button" href="#" >Работа с REST </a>
             <ul class="submenu">
-                <li class="submenu__item"><a class="menu__button" href="">GET</a></li>
-                <li class="submenu__item"><a class="menu__button" href="">POST</a></li>
+                <li class="submenu__item"><a class="menu__button" href="/getAllBooks">GET all books</a></li>
+                <li class="submenu__item"><a class="menu__button" href="/addBookRest">POST</a></li>
             </ul>
         </li>
         <li class="menu__item"><a class="menu__button" href="#" >Работа с SOAP</a>

@@ -28,7 +28,8 @@ public class MainController {
     }
 
     @RequestMapping(path = "/search", method = RequestMethod.GET)
-    final String search() {
+    final String search(Model model) {
+        model.addAttribute("authors", authorService.getAuthorList());
         return "search";
     }
 

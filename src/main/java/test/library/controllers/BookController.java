@@ -19,6 +19,7 @@ public class BookController {
 
     @RequestMapping(path = "/books/{authorId}", method = RequestMethod.GET)
     final String books(@PathVariable(value = "authorId") final Integer authorId, final Model model) {
+        model.addAttribute("authors", authorService.getAuthorList());
         model.addAttribute("author", authorService.getAuthorById(authorId));
         model.addAttribute("books", bookService.getBooksByAuthorId(authorId));
         return "books";
@@ -44,5 +45,11 @@ public class BookController {
         responseBody.setMsg("Книга добавленна");
         responseBody.setCode("201");
         return responseBody;
+    }
+
+    @RequestMapping(path = "/addBookRest", method = RequestMethod.GET)
+    final String addBookRest(final Model model) {
+        model.addAttribute("authors", authorService.getAuthorList());
+        return "REST/addBookRest";
     }
 }

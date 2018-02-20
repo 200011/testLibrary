@@ -15,6 +15,7 @@ ul.menu:after {
 }
 
 .menu__button {
+    display: block;
     padding: 10px;
     color: black;
     background-color: #c6e7ff;

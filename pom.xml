@@ -131,7 +131,7 @@
         </dependency>
 
 
-        <!-- resteasy-jaxrs -->
+<!--        &lt;!&ndash; resteasy-jaxrs &ndash;&gt;
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs</artifactId>
@@ -141,7 +141,7 @@
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-spring</artifactId>
             <version>${resteasy.version}</version>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 </project>
