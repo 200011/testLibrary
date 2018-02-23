@@ -18,7 +18,7 @@ function searchViaAjax() {
     $.ajax({
         type : "POST",
         contentType : "application/json",
-        url : "./search",
+        url : "./search.html",
         data : JSON.stringify(search),
         dataType : 'json',
         timeout : 100000,

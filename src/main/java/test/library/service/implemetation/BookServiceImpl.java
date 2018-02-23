@@ -27,6 +27,13 @@ public class BookServiceImpl implements BookService {
         bookDao.addBook(book);
     }
 
+    public void addBook(int authorId, String boonName) {
+        Book book = new Book();
+        book.setBookname(boonName);
+        book.setAuthor(authorService.getAuthorById(authorId));
+        bookDao.addBook(book);
+    }
+
     public final List<Book> getAllBooks() {
         return bookDao.getAllBooks();
     }
@@ -38,6 +45,15 @@ public class BookServiceImpl implements BookService {
     public final boolean isBookExistByAuthorId(final AddBookAjaxModel addBookAjaxModel) {
         for (Book book : getBooksByAuthorId(addBookAjaxModel.getAuthorId())) {
             if (book.getBookname().equalsIgnoreCase(addBookAjaxModel.getBook())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isBookExistByAuthorId(int authorId, String boonName) {
+        for (Book book : getBooksByAuthorId(authorId)) {
+            if (book.getBookname().equalsIgnoreCase(boonName)) {
                 return true;
             }
         }

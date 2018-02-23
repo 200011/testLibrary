@@ -17,7 +17,7 @@ function addViaAjax() {
     $.ajax({
         type : "POST",
         contentType : "application/json",
-        url : "./addBook",
+        url : "./addBook.html",
         data : JSON.stringify(search),
         dataType : 'json',
         timeout : 100000,

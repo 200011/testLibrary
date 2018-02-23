@@ -11,18 +11,17 @@ import test.library.service.BookService;
 
 import java.util.List;
 
-@RestController
 public class BookRestService {
 
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(name = "/getAllBooks", method = RequestMethod.GET)
+    @RequestMapping(name = "/rest/getAllBooks.html", method = RequestMethod.GET)
     public List<Book> testForm(){
         return bookService.getAllBooks();
     }
 
-    @RequestMapping(name = "/addBookRest", method = RequestMethod.POST)
+    @RequestMapping(name = "/rest/addBook.html", method = RequestMethod.POST)
     public ResponseEntity<?> addBookRest(@RequestBody AddBookAjaxModel inputBook){
 
         if (bookService.isBookExistByAuthorId(inputBook)) {

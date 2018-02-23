@@ -21,21 +21,21 @@ public class MainController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @RequestMapping(path = "/index.html", method = RequestMethod.GET)
     final String index(final Model model) {
         model.addAttribute("authors", authorService.getAuthorList());
         return "index";
     }
 
-    @RequestMapping(path = "/search", method = RequestMethod.GET)
-    final String search(Model model) {
+    @RequestMapping(path = "/search.html", method = RequestMethod.GET)
+    String search(Model model) {
         model.addAttribute("authors", authorService.getAuthorList());
         return "search";
     }
 
     @ResponseBody
-    @RequestMapping(path = "/search", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
-    final String search(@RequestBody final SearchAjaxModel searchAjaxModel) {
+    @RequestMapping(path = "/search.html", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
+    String search(@RequestBody SearchAjaxModel searchAjaxModel) {
        List<Book> bookList = bookService.searchBooksByCriteria(searchAjaxModel);
 
        return new Gson().toJson(bookList);

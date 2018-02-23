@@ -17,7 +17,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(path = "/books/{authorId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/books/{authorId}.html", method = RequestMethod.GET)
     final String books(@PathVariable(value = "authorId") final Integer authorId, final Model model) {
         model.addAttribute("authors", authorService.getAuthorList());
         model.addAttribute("author", authorService.getAuthorById(authorId));
@@ -25,15 +25,15 @@ public class BookController {
         return "books";
     }
 
-    @RequestMapping(path = "/addBook", method = RequestMethod.GET)
+    @RequestMapping(path = "/addBook.html", method = RequestMethod.GET)
     final String addBook(final Model model) {
         model.addAttribute("authors", authorService.getAuthorList());
         return "addBook";
     }
 
     @ResponseBody
-    @RequestMapping(path = "/addBook", method = RequestMethod.POST)
-    final AjaxResponseBody addBook(@RequestBody final AddBookAjaxModel addBookAjaxModel) {
+    @RequestMapping(path = "/addBook.html", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
+    AjaxResponseBody addBook(@RequestBody AddBookAjaxModel addBookAjaxModel) {
         AjaxResponseBody responseBody = new AjaxResponseBody();
 
         if (bookService.isBookExistByAuthorId(addBookAjaxModel)) {
@@ -47,8 +47,8 @@ public class BookController {
         return responseBody;
     }
 
-    @RequestMapping(path = "/addBookRest", method = RequestMethod.GET)
-    final String addBookRest(final Model model) {
+    @RequestMapping(path = "/addBookRest.html", method = RequestMethod.GET)
+    String addBookRest(final Model model) {
         model.addAttribute("authors", authorService.getAuthorList());
         return "REST/addBookRest";
     }
