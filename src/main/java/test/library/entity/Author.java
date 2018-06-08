@@ -1,9 +1,13 @@
 package test.library.entity;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+/*@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)*/
 public class Author {
     private Integer authorId;
     private String name;

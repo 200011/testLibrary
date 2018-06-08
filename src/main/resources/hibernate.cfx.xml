@@ -4,6 +4,9 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+ <!--       <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.provider_class">net.sf.ehcache.hibernate.SingletonEhCacheProvider</property>
+-->
         <property name="driverClassName">org.postgresql.Driver</property>
         <property name="dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
         <property name="show_sql">true</property>

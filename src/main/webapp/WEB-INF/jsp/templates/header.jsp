@@ -17,7 +17,7 @@
         <li class="menu__item"><a class="menu__button" href="#" >Работа с REST </a>
             <ul class="submenu">
                 <li class="submenu__item"><a class="menu__button" href="rest/getAllBooks.html">GET all books</a></li>
-                <li class="submenu__item"><a class="menu__button" href="rest/addBook.html">POST</a></li>
+                <li class="submenu__item"><a class="menu__button" href="/addBookRest.html">POST</a></li>
             </ul>
         </li>
         <li class="menu__item"><a class="menu__button" href="/soap/book.wsdl" >Работа с SOAP</a></li>

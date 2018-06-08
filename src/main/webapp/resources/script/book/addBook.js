@@ -1,4 +1,4 @@
-$(document).ready(function($) {
+jQuery(document).ready(function($) {
 
     $("#addBook-form").submit(function(event) {
         event.preventDefault();

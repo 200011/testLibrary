@@ -11,6 +11,7 @@ import test.library.model.SearchAjaxModel;
 import test.library.service.AuthorService;
 import test.library.service.BookService;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
@@ -34,10 +35,10 @@ public class MainController {
     }
 
     @ResponseBody
-    @RequestMapping(path = "/search.html", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
+    @RequestMapping(path = "/search.html", method = RequestMethod.POST)
     String search(@RequestBody SearchAjaxModel searchAjaxModel) {
-       List<Book> bookList = bookService.searchBooksByCriteria(searchAjaxModel);
+        List<Book> bookList = bookService.searchBooksByCriteria(searchAjaxModel);
 
-       return new Gson().toJson(bookList);
+        return new Gson().toJson(bookList);
     }
 }

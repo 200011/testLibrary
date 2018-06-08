@@ -4,10 +4,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import test.library.dao.AuthorDao;
 import test.library.entity.Author;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository

@@ -4,13 +4,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import test.library.dao.BookDao;
 import test.library.entity.Author;
 import test.library.entity.Book;
 import test.library.entity.Book_;
 import test.library.model.SearchAjaxModel;
+
 import javax.persistence.criteria.*;
-import javax.transaction.Transactional;
 import java.util.List;
 import test.library.entity.Author_;
 
@@ -22,7 +23,7 @@ public class BookDaoImpl implements BookDao {
 
     @Transactional
     public void addBook(final Book book) {
-        sessionFactory.getCurrentSession().save(book);
+        sessionFactory.getCurrentSession().persist(book);
     }
 
     @Transactional
@@ -33,6 +34,7 @@ public class BookDaoImpl implements BookDao {
     @Transactional
     public List<Book> getBooksByAuthorId(final int authorId) {
         Query query = sessionFactory.getCurrentSession().createQuery("from Book where author.authorId =:authorId");
+        query.setCacheable(true);
         query.setParameter("authorId", authorId);
         return query.getResultList();
     }

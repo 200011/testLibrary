@@ -17,7 +17,7 @@ function searchViaAjax() {
 
     $.ajax({
         type : "POST",
-        contentType : "application/json",
+        contentType: "application/json; charset=UTF-8",
         url : "./search.html",
         data : JSON.stringify(search),
         dataType : 'json',

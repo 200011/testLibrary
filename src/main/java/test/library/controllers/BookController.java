@@ -1,5 +1,8 @@
 package test.library.controllers;
 
+import com.google.gson.Gson;
+import org.apache.commons.io.IOUtils;
+import org.postgresql.core.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +12,10 @@ import test.library.model.AjaxResponseBody;
 import test.library.service.AuthorService;
 import test.library.service.BookService;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+
 @Controller
 public class BookController {
     @Autowired
@@ -17,7 +24,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(path = "/books/{authorId}.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/books/{authorId}.html", method = RequestMethod.GET)
     final String books(@PathVariable(value = "authorId") final Integer authorId, final Model model) {
         model.addAttribute("authors", authorService.getAuthorList());
         model.addAttribute("author", authorService.getAuthorById(authorId));
@@ -26,25 +33,25 @@ public class BookController {
     }
 
     @RequestMapping(path = "/addBook.html", method = RequestMethod.GET)
-    final String addBook(final Model model) {
+    String addBook(Model model) {
         model.addAttribute("authors", authorService.getAuthorList());
         return "addBook";
     }
 
     @ResponseBody
-    @RequestMapping(path = "/addBook.html", method = RequestMethod.POST, produces = {"application/json; charset=UTF-8"})
-    AjaxResponseBody addBook(@RequestBody AddBookAjaxModel addBookAjaxModel) {
+    @RequestMapping(path = "/addBook.html", method = RequestMethod.POST)
+    String addBook(@RequestBody AddBookAjaxModel addBookAjaxModel, HttpServletResponse response) throws IOException {
         AjaxResponseBody responseBody = new AjaxResponseBody();
 
         if (bookService.isBookExistByAuthorId(addBookAjaxModel)) {
             responseBody.setMsg("Книга уже добавленна");
             responseBody.setCode("205");
-            return responseBody;
+            return new Gson().toJson(responseBody);
         }
         bookService.addBook(addBookAjaxModel);
         responseBody.setMsg("Книга добавленна");
         responseBody.setCode("201");
-        return responseBody;
+        return new Gson().toJson(responseBody);
     }
 
     @RequestMapping(path = "/addBookRest.html", method = RequestMethod.GET)
